@@ -31,17 +31,15 @@
 #include "switching.h"
 #include "../module.h"
 
+static int dummy_status = SWITCH_OFF;
+
 /**
  * Reports the status of linuxpm
  *
  * @return SWITCH_OFF if card is off, SWITCH_ON if card is on
  */
 enum switch_state linuxpm_status(void) {
-  if (module_is_loaded("nvidia")) {
-    return SWITCH_ON;
-  } else {
-    return SWITCH_OFF;
-  }
+  return dummy_status;
 }//linuxpm_status
 
 /**
@@ -56,10 +54,12 @@ int linuxpm_is_available(struct switch_info info) {
  * Turns card on if not already on
  */
 void linuxpm_on(void) {
+  dummy_status = SWITCH_ON;
 }//linuxpm_on
 
 /**
  * Turns card off if not already off
  */
 void linuxpm_off(void) {
+  dummy_status = SWITCH_OFF;
 }//linuxpm_off

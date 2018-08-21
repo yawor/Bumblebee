@@ -58,8 +58,13 @@ int switcheroo_is_available(struct switch_info);
 void switcheroo_on(void);
 void switcheroo_off(void);
 
+enum switch_state linuxpm_status(void);
+int linuxpm_is_available(struct switch_info);
+void linuxpm_on(void);
+void linuxpm_off(void);
+
 /* number of switchers as defined in switching.c */
-#define SWITCHERS_COUNT 2
+#define SWITCHERS_COUNT 3
 struct switching_method switching_methods[SWITCHERS_COUNT];
 
 /* A switching method that can be used or NULL if none */
